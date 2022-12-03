@@ -38,7 +38,7 @@ public class LoginMy extends AppCompatActivity {
                 String name = String.valueOf(firstname.getEditText().getText());
                 String pass = String.valueOf(password.getEditText().getText());
                 if(pass.equals("") || name.equals("")) {
-                    Toast.makeText(LoginMy.this, "Please input datajj", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginMy.this, "Please input data", Toast.LENGTH_SHORT).show();
                 } else {
                     Boolean checkpass = DB.checkUpassword(name, pass);
                     if (checkpass == true) {

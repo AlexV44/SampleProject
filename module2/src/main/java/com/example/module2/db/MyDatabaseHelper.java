@@ -19,7 +19,7 @@ import java.io.OutputStream;
 
 public class MyDatabaseHelper extends SQLiteOpenHelper {
 
-    private static final String DB_NAME = "newDB.db";
+    private static final String DB_NAME = "users.db";
     private static final int DB_VERSION = 6;
 
     public MyDatabaseHelper(Context context)  {
@@ -29,14 +29,12 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase MyDB) {
-        MyDB.execSQL("CREATE Table client (firstname TEXT primary key, password TEXT)");
+        MyDB.execSQL("CREATE TABLE client (firstname TEXT PRIMARY KEY, password TEXT)");
     }
 
 
     @Override
-    public void onUpgrade(SQLiteDatabase MyDB, int i, int i1) {
-        MyDB.execSQL("DROP Table if exists client");
-    }
+    public void onUpgrade(SQLiteDatabase MyDB, int i, int i1) {}
 
     public Boolean insertData(String firstname, String password) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
@@ -63,7 +61,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     public Boolean checkUpassword(String firstname, String password) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
-        Cursor cursor = MyDB.rawQuery("SELECT * FROM client WHERE firstname = ? and password = ?", new String[] {firstname, password});
+        Cursor cursor = MyDB.rawQuery("SELECT * FROM client WHERE firstname = ? AND password = ?", new String[] {firstname, password});
         if(cursor.getCount() > 0) {
             return true;
         } else {

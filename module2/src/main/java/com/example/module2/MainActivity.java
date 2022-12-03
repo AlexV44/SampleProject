@@ -27,12 +27,7 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        password = (TextInputLayout) findViewById(R.id.password);
-        firstname = (TextInputLayout) findViewById(R.id.firstname);
-        repassword = (TextInputLayout) findViewById(R.id.repassword);
-
-        btnSignUp = (Button) findViewById(R.id.btnSignUp);
-        btnGoSignIn = (Button) findViewById(R.id.btnGoSignIn);
+        initViews();
 
         DB = new MyDatabaseHelper(this);
 
@@ -43,30 +38,8 @@ public class MainActivity extends AppCompatActivity  {
                 String pass = String.valueOf(password.getEditText().getText());
                 String repass = String.valueOf(repassword.getEditText().getText());
 
-
-               if(name.equals("") || pass.equals("") || repass.equals("")) {
-                   Toast.makeText(MainActivity.this, "Please input correct data!", Toast.LENGTH_SHORT).show();
-               } else {
-                   if(pass.equals(repass)) {
-                       Boolean checkuser = DB.checkfirstname(name);
-                        if(checkuser == false) {
-                            Boolean insert = DB.insertData(name, pass);
-                            if(insert == true) {
-                                Toast.makeText(MainActivity.this, "You were registered successfully", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), Swipe.class);
-                                startActivity(intent);
-                                finish();
-                            } else {
-                                Toast.makeText(MainActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
-                            }
-                        } else {
-                            Toast.makeText(MainActivity.this, "User already exists", Toast.LENGTH_SHORT).show();
-                        }
-                   } else {
-                       Toast.makeText(MainActivity.this, "Passwords not matching", Toast.LENGTH_SHORT).show();
-                   }
+                checkValidData(name, pass, repass);
                }
-            }
         });
 
         btnGoSignIn.setOnClickListener(new View.OnClickListener() {
@@ -77,5 +50,48 @@ public class MainActivity extends AppCompatActivity  {
                 finish();
             }
         });
+    }
+
+
+
+
+
+
+
+    private void initViews() {
+        password = findViewById(R.id.password);
+        firstname = findViewById(R.id.firstname);
+        repassword = findViewById(R.id.repassword);
+        btnSignUp = findViewById(R.id.btnSignUp);
+        btnGoSignIn = findViewById(R.id.btnGoSignIn);
+    }
+
+    private void checkValidData(String name, String password, String repassword) {
+        if(name.equals("") || password.equals("") || repassword.equals("")) {
+            Toast.makeText(MainActivity.this, "Please input correct data!", Toast.LENGTH_SHORT).show();
+        } else {
+            check(name, password, repassword);
+        }
+    }
+
+    private void check(String name, String password, String repassword) {
+        if(password.equals(repassword)) {
+            Boolean checkuser = DB.checkfirstname(name);
+            if(checkuser == false) {
+                Boolean insert = DB.insertData(name, password);
+                if(insert == true) {
+                    Toast.makeText(MainActivity.this, "You were registered successfully", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), Swipe.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(MainActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(MainActivity.this, "User already exists", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(MainActivity.this, "Passwords not matching", Toast.LENGTH_SHORT).show();
+        }
     }
 }
