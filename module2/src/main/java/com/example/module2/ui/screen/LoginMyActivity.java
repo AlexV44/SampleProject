@@ -22,7 +22,7 @@ public class LoginMyActivity extends AppCompatActivity {
     ClientDao clientDao;
 
     public static void startActivity(Activity srcActivity) {
-        Intent intent = new Intent(srcActivity, SwipeActivity.class);
+        Intent intent = new Intent(srcActivity, LoginMyActivity.class);
         srcActivity.startActivity(intent);
     }
 
