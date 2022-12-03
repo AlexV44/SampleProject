@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:id="@+id/home"
     android:background="@color/purple_500"
-    tools:context=".HomeFragment">
+    tools:context=".unused.HomeFragment">
 
     <TextView
         android:layout_width="wrap_content"

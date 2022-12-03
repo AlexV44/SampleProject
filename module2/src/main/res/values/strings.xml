@@ -14,4 +14,16 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="large_text">Hello blank fragment</string>
+
+    <string name="registration_succeeded">You were registered successfully</string>
+    <string name="login_succeeded">Sign in successfully</string>
+
+    <!-- Errors -->
+    <string name="error_incorrect_user_input">Please input correct data!</string>
+    <string name="error_passwords_not_matching">Passwords not matching</string>
+    <string name="error_user_exists">User already exists</string>
+    <string name="error_registration_failed">Registration failed</string>
+    <string name="error_no_data">Please input data</string>
+    <string name="error_invalid_data">Invalid data</string>
+    <string name="error_login">Incorrect password or user does not exist</string>
 </resources>

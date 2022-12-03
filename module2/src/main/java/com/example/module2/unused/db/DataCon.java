@@ -1,4 +1,4 @@
-package com.example.module2.db;
+package com.example.module2.unused.db;
 
 public class DataCon {
     public static String dbHost = "localhost";

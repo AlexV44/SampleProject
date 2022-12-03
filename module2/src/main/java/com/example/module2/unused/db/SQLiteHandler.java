@@ -1,12 +1,10 @@
-package com.example.module2.db;
+package com.example.module2.unused.db;
 
-import static com.example.module2.db.Config.*;
+import static com.example.module2.unused.db.Config.*;
 
-import android.view.View;
 import android.widget.TextView;
 
 import java.sql.*;
-import java.util.Scanner;
 
 public class SQLiteHandler {
 

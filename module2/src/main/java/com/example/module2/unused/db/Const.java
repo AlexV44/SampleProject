@@ -1,4 +1,4 @@
-package com.example.module2.db;
+package com.example.module2.unused.db;
 
 public class Const {
     public static final String  USER_TABLE = "Users";
